@@ -1,0 +1,10 @@
+{
+  "python.defaultInterpreterPath": "/Users/jhi42/.virtualenvs/airbnb-clone-oCZhbHO0/Scripts",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "python.linting.flake8Args": [
+    "--max-line-length=99"
+  ]
+}
