@@ -1,12 +1,16 @@
-from encodings import search_function
 from django.contrib import admin
 from . import models
-
+from django.utils.html import mark_safe
 
 @admin.register(models.RoomType, models.Facility, models.Amenity, models.HouseRule)
 class ItemAdmin(admin.ModelAdmin):
 
     """Item Admin Definition"""
+
+    list_display = ("name", "used_by",)    
+
+    def used_by(self, obj):
+        return obj.rooms.count()
     pass
 
 
@@ -38,7 +42,7 @@ class RoomAdmin(admin.ModelAdmin):
         ),
     )
 
-    list_display = ("name", "country", "city", "price", "guests", "beds", "bedrooms", "baths", "check_in", "check_out", "instant_book", "count_amenities",)
+    list_display = ("name", "country", "city", "price", "guests", "beds", "bedrooms", "baths", "check_in", "check_out", "instant_book", "count_amenities", "count_photos", "total_rating",)
 
     ordering = ("price",)
 
@@ -49,8 +53,10 @@ class RoomAdmin(admin.ModelAdmin):
     filter_horizontal = ("amenity", "facility", "house_rules",)
 
     def count_amenities(self, obj):
-        return self
+        return obj.amenity.count()
 
+    def count_photos(self, obj):
+        return obj.photos.count()
 
 
 @admin.register(models.Photo)
@@ -58,6 +64,8 @@ class PhotoAdmin(admin.ModelAdmin):
 
     """Photo Admin Definition"""
 
-    pass
+    list_display = ("__str__", "get_thumbnail")
 
-
+    def get_thumbnail(self, obj):
+        return mark_safe(f'<img width="100px" src = "{obj.file.url}" />')
+    get_thumbnail.short_description = "Thumnail"
