@@ -4,7 +4,6 @@
   "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
-  "python.linting.flake8Args": [
-    "--max-line-length=99"
-  ]
+  "python.linting.flake8Args": ["--max-line-length=99"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
