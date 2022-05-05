@@ -387,6 +387,12 @@ form .input.has_error input:focus {
 .message.warning {
   background-color: #f6e05e;
 }
+.border-section {
+  border-bottom-width: 1px;
+  border-color: #cbd5e0;
+  padding-bottom: 2rem;
+  margin-top: 2rem;
+}
 .sr-only {
   position: absolute;
   width: 1px;
