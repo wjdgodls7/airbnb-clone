@@ -44,11 +44,11 @@ class Command(BaseCommand):
             for a in amenities:
                 magic_number = random.randint(0, 15)
                 if magic_number % 2 == 0:
-                    room.amenity.add(a)
+                    room.amenities.add(a)
             for f in facilities:
                 magic_number = random.randint(0, 15)
                 if magic_number % 2 == 0:
-                    room.facility.add(f)
+                    room.facilities.add(f)
             for f in rules:
                 magic_number = random.randint(0, 15)
                 if magic_number % 2 == 0:

@@ -2,6 +2,7 @@ from django.contrib import admin
 from . import models
 from django.utils.html import mark_safe
 
+
 @admin.register(models.RoomType, models.Facility, models.Amenity, models.HouseRule)
 class ItemAdmin(admin.ModelAdmin):
 
@@ -29,7 +30,7 @@ class RoomAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             "Basic Info",
-            {"fields": ("name", "describtion", "country", "city", "address", "price")},
+            {"fields": ("name", "description", "country", "city", "address", "price")},
         ),
         (
             "Times",
@@ -41,7 +42,7 @@ class RoomAdmin(admin.ModelAdmin):
         ),
         (
             "More About the Space",
-            {"fields": ("amenity", "facility", "house_rules")},
+            {"fields": ("amenities", "facilities", "house_rules")},
         ),
         (
             "Last Details",
@@ -53,16 +54,16 @@ class RoomAdmin(admin.ModelAdmin):
 
     ordering = ("price",)
 
-    list_filter = ("instant_book", "host__superhost", "room_type", "amenity", "facility", "house_rules", "city", "country")
+    list_filter = ("instant_book", "host__superhost", "room_type", "amenities", "facilities", "house_rules", "city", "country")
 
     search_fields = ("^city", "^host__username")
 
     raw_id_fields = ("host",)
 
-    filter_horizontal = ("amenity", "facility", "house_rules",)
+    filter_horizontal = ("amenities", "facilities", "house_rules",)
 
     def count_amenities(self, obj):
-        return obj.amenity.count()
+        return obj.amenities.count()
 
     def count_photos(self, obj):
         return obj.photos.count()

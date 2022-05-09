@@ -49,4 +49,5 @@ class CustomUserAdmin(UserAdmin):
         "email_verified",
         "email_secret",
         "login_method",
+        "avatar",
     )
