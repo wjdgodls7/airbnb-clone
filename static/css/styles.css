@@ -393,6 +393,12 @@ form .input.has_error input:focus {
   padding-bottom: 2rem;
   margin-top: 2rem;
 }
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+}
 .sr-only {
   position: absolute;
   width: 1px;
