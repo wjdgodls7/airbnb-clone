@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from core import models as core_models
 
 
-class Review(core_models.TimeStampedModel):
+class Review(core_models.TimeStampModel):
 
     """ Review Model Definition """
 

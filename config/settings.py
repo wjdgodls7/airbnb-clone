@@ -57,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "Asia/Seoul"
 
@@ -149,4 +150,11 @@ EMAIL_FROM = "sexy-guy@sandboxfbeebf9bce2e4b1a8c5472e8848344e1.mailgun.org"
 
 
 # Auth
-LOGIN_URL= "/users/login/"
+LOGIN_URL = "/users/login/"
+
+# Locale
+LOCALE_PATHS = (BASE_DIR/"locale",)
+
+LANGUAGE_CODE = "en"
+
+LANGUAGE_COOKIE_NAME = "django_language"
