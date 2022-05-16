@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-%o^5=mid=%(toyh4x%^9d#^*-c4!$+o1-vi@vfo*6k58nyydud"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG"))
-
+# DEBUG = bool(os.environ.get("DEBUG"))
+DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -84,7 +84,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if DEBUG:
+if DEBUG is False:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
