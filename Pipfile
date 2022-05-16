@@ -12,6 +12,7 @@ django-seed = "*"
 psycopg2 = "*"
 django-dotenv = "*"
 requests = "*"
+sentry-sdk = "==0.13.2"
 
 [dev-packages]
 flake8 = "*"
