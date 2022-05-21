@@ -4,12 +4,12 @@ from users.models import User
 
 class Command(BaseCommand):
 
-    help = "This command create superuser"
+    help = "This command creates superuser"
 
     def handle(self, *args, **options):
         admin = User.objects.get_or_none(username="ebadmin")
         if not admin:
-            User.objects.create_superuser("ebadmin", "jhi5576@naver.com", "123456")
-            self.stdout.write(self.style.SUCCESS("Supersuer Created"))
+            User.objects.create_superuser("ebadmin", "jhi5576@naver.com", "12")
+            self.stdout.write(self.style.SUCCESS(f"Superuser Created"))
         else:
-            self.stdout.write(self.style.SUCCESS("Supersuer Exists"))
+            self.stdout.write(self.style.SUCCESS(f"Superuser Exists"))
