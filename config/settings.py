@@ -177,15 +177,14 @@ LANGUAGE_COOKIE_NAME = "django_language"
 
 if not DEBUG:
 
-    DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
-    STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = "airbnb-clone-HAEiNee"
-    AWS_AUTO_CREATE_BUCKET = True
+    AWS_STORAGE_BUCKET_NAME = "airbnb-clone-haeinee"
     AWS_DEFAULT_ACL = "public-read"
 
-    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.ap-northeast-2.amazonaws.com"
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
     sentry_sdk.init(
