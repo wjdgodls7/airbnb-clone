@@ -25,8 +25,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = bool(os.environ.get("DEBUG"))
-DEBUG = bool(os.environ.get("DEBUG"))
-ALLOWED_HOSTS = [".elasticbeanstalk.com"]
+DEBUG = True
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -48,7 +48,7 @@ PROJECT_APPS = [
     "lists.apps.ListsConfig",
     "conversations.apps.ConversationsConfig"
 ]
-THIRD_PARTY_APPS = ["django_countries", "django_seed", "storages"]
+THIRD_PARTY_APPS = ["django_countries", "django_seed"]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
@@ -86,7 +86,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if DEBUG is False:
+if DEBUG is True:
 
     DATABASES = {
         "default": {
@@ -141,8 +141,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = 'static'
-STATICFILES_DIRS = [BASE_DIR/"static"]
+# STATIC_ROOT = 'static'
+STATICFILES_DIRS = [BASE_DIR/'static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -175,28 +175,28 @@ LANGUAGE_COOKIE_NAME = "django_language"
 
 # Sentry
 
-if not DEBUG:
+# if not DEBUG:
 
-    DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
-    STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
-    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = "airbnb-clone-haeinee"
-    AWS_DEFAULT_ACL = "public-read"
+#     DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
+#     STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
+#     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+#     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+#     AWS_STORAGE_BUCKET_NAME = "airbnb-clone-haeinee"
+#     AWS_DEFAULT_ACL = "public-read"
 
-    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.ap-northeast-2.amazonaws.com"
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+#     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.ap-northeast-2.amazonaws.com"
+#     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
-    sentry_sdk.init(
-        dsn=os.environ.get("SENTRY_URL"),
-        integrations=[DjangoIntegration()],
+#     sentry_sdk.init(
+#         dsn=os.environ.get("SENTRY_URL"),
+#         integrations=[DjangoIntegration()],
 
-        # Set traces_sample_rate to 1.0 to capture 100%
-        # of transactions for performance monitoring.
-        # We recommend adjusting this value in production.
-        traces_sample_rate=1.0,
+#         # Set traces_sample_rate to 1.0 to capture 100%
+#         # of transactions for performance monitoring.
+#         # We recommend adjusting this value in production.
+#         traces_sample_rate=1.0,
 
-        # If you wish to associate users to errors (assuming you are using
-        # django.contrib.auth) you may enable sending PII data.
-        send_default_pii=True
-    )
+#         # If you wish to associate users to errors (assuming you are using
+#         # django.contrib.auth) you may enable sending PII data.
+#         send_default_pii=True
+#     )
